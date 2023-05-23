@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'react-native-get-random-values';
 import { nanoid } from 'nanoid';
 
 import {
@@ -23,7 +24,8 @@ export class ContactForm extends Component {
   // функція відправки даних
   handleSubmit = event => {
     event.preventDefault();
-    this.props.receiveData(this.state);
+    const id = { id: nanoid(3) };
+    this.props.receiveData({ ...id, ...this.state });
     this.reset();
   };
 
