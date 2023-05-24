@@ -12,7 +12,14 @@ export class App extends Component {
 
   // функція запису отриманих даних до масиву contacts
   formSubmit = data => {
-    this.state.contacts.push(data);
+    if (
+      this.state.contacts.findIndex(contact => contact.name === data.name) ===
+      -1
+    ) {
+      this.state.contacts.push(data);
+    } else {
+      alert(`${data.name} is already in contacts.`);
+    }
     this.setState({ contacts: this.state.contacts });
   };
 
