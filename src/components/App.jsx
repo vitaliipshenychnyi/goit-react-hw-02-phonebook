@@ -26,12 +26,16 @@ export class App extends Component {
   // функція отримання даних з поля filter
   changeFilter = event => {
     this.setState({ filter: event.currentTarget.value });
-    console.log(this.state.filter);
   };
 
   render() {
     const { contacts, filter } = this.state;
-    console.log(contacts);
+    
+    // умова пошуку контактів у списку за значенням веденних даних у поле filter
+    const visibleContact = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+
     return (
       <Container>
         <h1>Phonebook</h1>
@@ -39,7 +43,7 @@ export class App extends Component {
 
         <h2>Contacts:</h2>
         <Filter value={filter} changeFilter={this.changeFilter} />
-        <ContactsList contacts={contacts} />
+        <ContactsList contacts={visibleContact} />
       </Container>
     );
   }
