@@ -30,7 +30,7 @@ export class App extends Component {
 
   render() {
     const { contacts, filter } = this.state;
-    
+
     // умова пошуку контактів у списку за значенням веденних даних у поле filter
     const visibleContact = contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
@@ -43,7 +43,7 @@ export class App extends Component {
 
         <h2>Contacts:</h2>
         <Filter value={filter} changeFilter={this.changeFilter} />
-        <ContactsList contacts={visibleContact} />
+        {contacts.length !== 0 && <ContactsList contacts={visibleContact} />}
       </Container>
     );
   }
