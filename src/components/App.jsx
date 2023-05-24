@@ -13,7 +13,7 @@ export class App extends Component {
   // функція запису отриманих даних до масиву contacts
   formSubmit = data => {
     this.state.contacts.push(data);
-    console.log(this.state.contacts);
+    this.setState({ contacts: this.state.contacts });
   };
 
   render() {
@@ -25,7 +25,7 @@ export class App extends Component {
         <ContactForm receiveData={this.formSubmit} />
 
         <h2>Contacts:</h2>
-        <Filter />
+        <Filter contacts={contacts} />
         <ContactsList contacts={contacts} />
       </Container>
     );

@@ -6,13 +6,20 @@ export const ContactsList = ({ contacts }) => {
   return (
     <ListOfContact>
       {contacts.map(contact => (
-        <ContactItem key={contact.id}>{contact.name}</ContactItem>
+        <ContactItem key={contact.id}>
+          {contact.name}: {contact.number}
+        </ContactItem>
       ))}
     </ListOfContact>
   );
 };
 
-// ContactsList.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   children: PropTypes.array.isRequired,
-// };
+ContactsList.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
+};
