@@ -1,6 +1,10 @@
-import { TitleFindInput, InputFindField } from './Filter.styled';
+import {
+  FindFormWrapper,
+  TitleFindInput,
+  InputFindField,
+} from './Filter.styled';
 
-export const Filter = ({contacts}) => (
+export const Filter = () => (
   <TitleFindInput htmlFor="">
     Find contacts by name
     <InputFindField

@@ -25,7 +25,7 @@ export class App extends Component {
         <ContactForm receiveData={this.formSubmit} />
 
         <h2>Contacts:</h2>
-        <Filter contacts={contacts}/>
+        <Filter />
         <ContactsList contacts={contacts} />
       </Container>
     );
