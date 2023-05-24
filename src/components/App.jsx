@@ -28,6 +28,15 @@ export class App extends Component {
     this.setState({ filter: event.currentTarget.value });
   };
 
+  // функція видалення контакту зі списку
+  deleteContact = event => {
+    const idxContact = this.state.contacts.findIndex(
+      contact => contact.id === event.currentTarget.dataset.id
+    );
+
+    this.setState({ contact: this.state.contacts.splice(idxContact, 1) });
+  };
+
   render() {
     const { contacts, filter } = this.state;
 
@@ -43,7 +52,12 @@ export class App extends Component {
 
         <h2>Contacts:</h2>
         <Filter value={filter} changeFilter={this.changeFilter} />
-        {contacts.length !== 0 && <ContactsList contacts={visibleContact} />}
+        {contacts.length !== 0 && (
+          <ContactsList
+            contacts={visibleContact}
+            deleteContact={this.deleteContact}
+          />
+        )}
       </Container>
     );
   }
