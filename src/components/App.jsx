@@ -23,6 +23,12 @@ export class App extends Component {
     this.setState({ contacts: this.state.contacts });
   };
 
+  // функція отримання даних з поля filter
+  changeFilter = event => {
+    this.setState({ filter: event.currentTarget.value });
+    console.log(this.state.filter);
+  };
+
   render() {
     const { contacts, filter } = this.state;
     console.log(contacts);
@@ -32,7 +38,7 @@ export class App extends Component {
         <ContactForm receiveData={this.formSubmit} />
 
         <h2>Contacts:</h2>
-        <Filter />
+        <Filter value={filter} changeFilter={this.changeFilter} />
         <ContactsList contacts={contacts} />
       </Container>
     );
