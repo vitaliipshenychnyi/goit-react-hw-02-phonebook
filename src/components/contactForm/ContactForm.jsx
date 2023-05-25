@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import 'react-native-get-random-values';
 import { nanoid } from 'nanoid';
 
@@ -37,7 +38,7 @@ export class ContactForm extends Component {
     render() {
         return (
             <FormWrapper onSubmit={this.handleSubmit}>
-                <TitleInput htmlFor="">
+                <TitleInput>
                     Name
                     <InputField
                         type="text"
@@ -50,7 +51,7 @@ export class ContactForm extends Component {
                     />
                 </TitleInput>
 
-                <TitleInput htmlFor="">
+                <TitleInput>
                     Number
                     <InputField
                         type="tel"
@@ -67,3 +68,7 @@ export class ContactForm extends Component {
         );
     }
 }
+
+ContactForm.propTypes = {
+    receiveData: PropTypes.func.isRequired,
+};
